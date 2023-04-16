@@ -1,22 +1,10 @@
 <div class="w-[650px] bg-white rounded-lg shadow p-6 mb-8">
 
   <div class="flex justify-center w-full">
-    <div class="flex-shrink-0 mr-5">
+    
       <!-- Avatar -->
-      <div class="
-        cursor-pointer
-        font-bold
-        w-12
-        h-12
-        bg-gray-300
-        flex
-        items-center
-        justify-center
-        rounded-full
-      ">
-        R
-      </div>
-    </div>
+      <app-avatar />
+
     <!-- Formulário -->
     <div class="flex-1">
       <!-- Text Area -->
@@ -38,7 +26,10 @@
         placeholder-gray-700"
         rows="3"
         placeholder="What's happening..."
-        maxlength="240">
+        [maxlength]="tweetMaxLenght"
+        [(ngModel)] = "tweetMessage"
+        (input)="changeTweet()"
+        (keyup.enter)="sendTweet()">
       </textarea>
 
       <!-- Divider Line -->
@@ -51,13 +42,15 @@
         <!-- Contador -->
 
         <div class="mr-5 font-thin text-gray-500">
-          <p>240</p>
+          <p>{{tweetRemain}}</p>
         </div>
 
         <!-- Botão -->
 
         <div class="mt-5">
-          <button class="
+          <button
+          (click)="sendTweet()"
+          class="
             w-32
             focus:outline-none
             border

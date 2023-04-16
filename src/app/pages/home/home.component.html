@@ -4,7 +4,10 @@
 <div class="flex items-center justify-center container mx-auto">
   <app-post/>
 </div>
-<footer class="fixed bottom-0 m-auto w-full">
+<div class="flex flex-col items-center justify-center container mx-auto" *ngFor="let tweetMessage of tweets">
+  <app-tweet [tweetMessage]=tweetMessage />
+</div>
+<footer class="pt-2 bottom-0 m-auto w-full">
   <app-footer/>
 </footer>
 
